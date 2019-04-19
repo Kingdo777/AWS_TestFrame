@@ -16,11 +16,11 @@ def get_mem_info():
     """
     Get and format the content of /proc/meminfo
     """
+    res = {}
     buf = open('/proc/meminfo').read()
-    buf = ','.join([v.replace(' ', '') for v in
-                    buf.split('\n') if v])
-
-    return buf
+    for v in [v.replace(' ', '') for v in buf.split('\n') if v]:
+        res[v.split(':')[0]] = v.split(':')[1]
+    return res
 
 
 def get_basic_info():
