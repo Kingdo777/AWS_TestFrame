@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import json
 import os
 import time
 
@@ -21,7 +22,7 @@ def handler(event, context):
         "run_time": fstr(tm_end - tm_st)
     }
     basic_info.update(time_info)
-    return basic_info
+    return json.dump(basic_info)
 
 
 print(handler({}, {}))
