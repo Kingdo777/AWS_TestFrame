@@ -17,6 +17,6 @@ def handler(event, context):
     tm_end = time.time() * 1000
     time_info = [fstr(tm_st), fstr(tm_end), fstr(tm_end - tm_st)]
     # basic_info.update(time_info)
-    res = "#".join(time_info + basic_info)
+    res = "#".join(time_info + basic_info)+"\n"
     print(res)
     return res
