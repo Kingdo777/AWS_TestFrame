@@ -59,7 +59,7 @@ class FuncOp:
             client = self.get_client()
             with open(src_file) as  zip_blob:
                 response = client.create_function(
-                    Code={'Zip': zip_blob.read()},
+                    Code={'ZipFile': zip_blob.read()},
                     FunctionName=self.func_name,
                     Handler=func_handler,
                     MemorySize=self.memory,

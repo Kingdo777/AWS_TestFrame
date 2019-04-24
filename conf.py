@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+import os
 from collections import OrderedDict
 
 CONGIF = {
     "creds":
         {
-            "aws_id": "AKIAJHML3C57NFW4LQLA",
-            "aws_key": "pq8oqVxWMoKDwIc4seYGtcj4u1dR6DATNoB0OJar"
+            "aws_id": "*",
+            "aws_key": "*"
         },
     "func":
         {
@@ -15,6 +16,9 @@ CONGIF = {
             "role_2": "arn:aws:iam::473540422335:role/service-role/kingdo"
         }
 }
+
+CONGIF["creds"]["aws_id"] = os.environ.get('aws_id')
+CONGIF["creds"]["aws_key"] = os.environ.get('aws_key')
 
 # The default path for function code
 

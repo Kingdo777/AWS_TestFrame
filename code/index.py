@@ -3,7 +3,7 @@
 import json
 import time
 
-from code.stats import *
+from stats import *
 
 
 def run_cmd(cmd):
