@@ -57,7 +57,7 @@ class FuncOp:
         """
         try:
             client = self.get_client()
-            with open(src_file) as  zip_blob:
+            with open(src_file) as zip_blob:
                 response = client.create_function(
                     Code={'ZipFile': zip_blob.read()},
                     FunctionName=self.func_name,
@@ -75,7 +75,7 @@ class FuncOp:
     def invoke_function(self):
         try:
             client = self.get_client()
-            response = client.invoke(self.func_name)
+            response = client.invoke(Functionname=self.func_name)
             return response
         except Exception as e:
             print(e)
