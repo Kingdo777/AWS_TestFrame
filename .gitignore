@@ -1,2 +1,6 @@
 *.pyc
 *.zip
+input
+logfile
+output
+tmp.zip

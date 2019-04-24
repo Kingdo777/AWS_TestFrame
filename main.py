@@ -5,6 +5,9 @@ import time
 
 from utils import *
 
+# 压缩文件
+
+
 # 准备工作
 func_prex = "start"
 aws_id, aws_key, region, roles = get_config_basic()
