@@ -71,3 +71,12 @@ class FuncOp:
         except Exception as e:
             print(str(e))
             return False
+
+    def invoke_function(self):
+        try:
+            client = self.get_client()
+            response = client.invoke(self.func_name)
+            return response
+        except Exception as e:
+            print(e)
+            return False
