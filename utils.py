@@ -43,7 +43,7 @@ class FuncOp:
     def delete_function(self):
         try:
             client = self.get_client()
-            client.delete_function(Functionname=self.func_name)
+            client.delete_function(FunctionName=self.func_name)
         except Exception as e:
             print(str(e))
             return False
