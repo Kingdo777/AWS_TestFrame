@@ -1,10 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import json
-import os
 import time
 
-from stats import *
+from code.stats import *
 
 
 def run_cmd(cmd):
@@ -22,7 +21,4 @@ def handler(event, context):
         "run_time": fstr(tm_end - tm_st)
     }
     basic_info.update(time_info)
-    return json.dump(basic_info)
-
-
-print(handler({}, {}))
+    return json.dumps(basic_info)
