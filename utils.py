@@ -75,7 +75,7 @@ class FuncOp:
     def invoke_function(self):
         try:
             client = self.get_client()
-            response = client.invoke(Functionname=self.func_name)
+            response = client.invoke(FunctionName=self.func_name)
             return response
         except Exception as e:
             print(e)
