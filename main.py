@@ -22,7 +22,7 @@ fp.create_function(zipped_code_path, func_handler)
 # 调用函数
 respond = fp.invoke_function()
 with open("logfile", "a+") as f:
-    f.write(fp.func_name + str(respond) + "\n")
+    f.write(fp.func_name+":" + str(respond) + "\n")
 
 # 删除函数
 # fp.delete_function()
