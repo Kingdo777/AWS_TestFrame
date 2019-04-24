@@ -147,15 +147,16 @@ def get_basic_info():
     # inst_priv_ip = get_inst_priv_ip()
     # cpu_info = get_cpuinfo_short()
 
-    res = {
-        'exist_id': exist_id,
-        'new_id': new_id,
-        'vm_id': vm_id,
-        'inst_id': inst_id,
-        'uptime': uptime,
-        # 'vm_priv_ip': vm_priv_ip,
-        # 'vm_pub_ip': vm_pub_ip,
-        # 'inst_priv_ip': inst_priv_ip,
-        # 'cpu_info': cpu_info
-    }
+    # res = {
+    #     'exist_id': exist_id,
+    #     'new_id': new_id,
+    #     'vm_id': vm_id,
+    #     'inst_id': inst_id,
+    #     'uptime': uptime,
+    #     # 'vm_priv_ip': vm_priv_ip,
+    #     # 'vm_pub_ip': vm_pub_ip,
+    #     # 'inst_priv_ip': inst_priv_ip,
+    #     # 'cpu_info': cpu_info
+    # }
+    res = [exist_id, new_id, vm_id, inst_id, uptime, ]
     return res

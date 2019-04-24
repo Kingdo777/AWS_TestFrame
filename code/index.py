@@ -15,10 +15,8 @@ def handler(event, context):
     basic_info = get_basic_info()
 
     tm_end = time.time() * 1000
-    time_info = {
-        "start_time": fstr(tm_st),
-        "end_time": fstr(tm_end),
-        "run_time": fstr(tm_end - tm_st)
-    }
-    basic_info.update(time_info)
-    return json.dumps(basic_info)
+    time_info = [fstr(tm_st), fstr(tm_end), fstr(tm_end - tm_st)]
+    # basic_info.update(time_info)
+    res = "#".join([time_info + basic_info])
+    print(res)
+    return res
