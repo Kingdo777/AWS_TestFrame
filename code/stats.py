@@ -19,6 +19,7 @@ def fstr(f):
     d1 = ctx.create_decimal(repr(f))
     return format(d1, 'f')
 
+def 
 
 def get_mem_info():
     """

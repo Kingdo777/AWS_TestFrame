@@ -13,7 +13,7 @@ def run_cmd(cmd):
 def handler(event, context):
     tm_st = time.time() * 1000
     basic_info = get_basic_info()
-
+    time.sleep(20)
     tm_end = time.time() * 1000
     time_info = [fstr(tm_st), fstr(tm_end), fstr(tm_end - tm_st)]
     # basic_info.update(time_info)

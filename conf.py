@@ -5,8 +5,9 @@ from collections import OrderedDict
 CONGIF = {
     "creds":
         {
-            "aws_id": "*",
-            "aws_key": "*"
+            # 很诡异，即使我没有设置这里的参数，依然会正常的运行，可能是从我的aws cli里面获取的
+            "aws_id": "",
+            "aws_key": ""
         },
     "func":
         {
@@ -19,7 +20,8 @@ CONGIF = {
 
 CONGIF["creds"]["aws_id"] = os.environ.get('aws_id')
 CONGIF["creds"]["aws_key"] = os.environ.get('aws_key')
-
+# AKIAW4QJVNK7Y7H472ES
+# xO53B9vxJ15CmThfskfILUDCM7ip+n4yuiRyeFVq
 # The default path for function code
 
 CODE_PATH = {
