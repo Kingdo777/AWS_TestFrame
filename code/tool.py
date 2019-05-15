@@ -4,6 +4,8 @@ import os
 import subprocess
 import time
 
+from iperf3 import iperf3
+
 
 def run_cmd(cmd):
     return os.popen(cmd).read().strip("\n")
@@ -114,26 +116,33 @@ def network_test(server_ip, port):
             (see doc of iperf)
     """
 
-    run_cmd("chmod 777 ./iperf3")
+    # run_cmd("sudo chmod +x ./iperf3")
+    #
+    # sp = subprocess.Popen(["./iperf3",
+    #                        "-c",
+    #                        server_ip,
+    #                        "-p",
+    #                        str(port),
+    #                        "-l",
+    #                        "-t",
+    #                        "1",
+    #                        "-Z",
+    #                        "-J"],
+    #                       stdout=subprocess.PIPE,
+    #                       stderr=subprocess.PIPE)
+    # out, err = sp.communicate()
+    # _d = json.loads(out)["end"]
+    # sender = _d["streams"][0]["sender"]
+    # bps = str(sender["bits_per_second"])
+    # # maxr = str(sender["max_rtt"])
+    # # minr = str(sender["min_rtt"])
+    # # meanr = str(sender["mean_rtt"])
+    # # return ",".join([bps, meanr, minr, maxr])
 
-    sp = subprocess.Popen(["./iperf3",
-                           "-c",
-                           server_ip,
-                           "-p",
-                           str(port),
-                           "-l",
-                           "-t",
-                           "1",
-                           "-Z",
-                           "-J"],
-                          stdout=subprocess.PIPE,
-                          stderr=subprocess.PIPE)
-    out, err = sp.communicate()
-    _d = json.loads(out)["end"]
-    sender = _d["streams"][0]["sender"]
-    bps = str(sender["bits_per_second"])
-    # maxr = str(sender["max_rtt"])
-    # minr = str(sender["min_rtt"])
-    # meanr = str(sender["mean_rtt"])
-    # return ",".join([bps, meanr, minr, maxr])
+    client = iperf3.Client()
+    client.duration = 1
+    client.server_hostname = server_ip
+    client.port = port
+    result = client.run()
+    bps = result.sent_Mbps
     return bps

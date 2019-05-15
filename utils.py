@@ -58,6 +58,7 @@ def make_zip_file(zip_filename):
         for root, dirs, files in os.walk("code"):
             for file in files:
                 abs_path = os.path.join(root, file)
+                file = abs_path[5:]
                 myzip.write(abs_path, file)  # 第一个参数是绝对路径，第二个参数是命名再压缩文件中的命名，也就是砍掉多余的路径
     return os.path.join(os.getcwd(), zip_filename)
 
