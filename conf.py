@@ -20,8 +20,6 @@ CONGIF = {
 
 CONGIF["creds"]["aws_id"] = os.environ.get('aws_id')
 CONGIF["creds"]["aws_key"] = os.environ.get('aws_key')
-# AKIAW4QJVNK7Y7H472ES
-# xO53B9vxJ15CmThfskfILUDCM7ip+n4yuiRyeFVq
 # The default path for function code
 
 CODE_PATH = {

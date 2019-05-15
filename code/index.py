@@ -4,19 +4,24 @@ import json
 import time
 
 from stats import *
-
-
-def run_cmd(cmd):
-    return os.popen(cmd).read().strip("\n")
+from tool import *
 
 
 def handler(event, context):
     tm_st = time.time() * 1000
     basic_info = get_basic_info()
-    time.sleep(20)
+    cpu_test_data = fstr(cpu_util_test(1000))
+    io_load_test_data = ioload_test(1, 1024 * 1024 * 200, 1)
+    net_test_data = network_test("202.114.7.185", "12345")
+    # write_test()
     tm_end = time.time() * 1000
-    time_info = [fstr(tm_st), fstr(tm_end), fstr(tm_end - tm_st)]
+    time_info = [fix_str_len(fstr(tm_st), 18),
+                 fix_str_len(fstr(tm_end), 18),
+                 fix_str_len(fstr(tm_end - tm_st), 18)]
     # basic_info.update(time_info)
-    res = "#".join(time_info + basic_info)+"\n"
-    print(res)
+    res = "#".join(time_info + basic_info) + "#" \
+          + cpu_test_data + "#" \
+          + io_load_test_data + "#" \
+          + net_test_data + "#" \
+          + "\n"
     return res
