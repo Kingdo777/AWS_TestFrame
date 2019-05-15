@@ -12,7 +12,7 @@ def handler(event, context):
     basic_info = get_basic_info()
     cpu_test_data = fstr(cpu_util_test(1000))
     io_load_test_data = ioload_test(1, 1024 * 1024 * 200, 1)
-    net_test_data = network_test("202.114.7.185", "12345")
+    net_test_data = network_test("127.0.0.1", "5201")
     # write_test()
     tm_end = time.time() * 1000
     time_info = [fix_str_len(fstr(tm_st), 18),

@@ -27,4 +27,4 @@ for rId in range(1):
     send_request(fp, 1, sync=True, rId=rId)
     # time.sleep((rId + 21) * 60)
     # 删除函数
-    # fp.delete_function()
+    fp.delete_function()

@@ -63,7 +63,7 @@ def make_zip_file(zip_filename):
     return os.path.join(os.getcwd(), zip_filename)
 
 
-def send_request(fp, task_num, sync, rId):
+def send_request(fp, task_num, sync, rId, para={}):
     """
     发起调用请求
     :param
@@ -74,9 +74,9 @@ def send_request(fp, task_num, sync, rId):
     :return:
     """
 
-    def invoke_func(rId, sub_rId):
+    def invoke_func(rId, sub_rId, para={}):
         # tm_st = time.time() * 1000
-        tm_st, tm_end, respond = fp.invoke_function()
+        tm_st, tm_end, respond = fp.invoke_function(req_para=para)
         # tm_end = time.time() * 1000
         tm_invoke = fix_str_len(fstr(tm_end - tm_st), 18)
         tm_st = fix_str_len(fstr(tm_st), 18)
@@ -92,8 +92,10 @@ def send_request(fp, task_num, sync, rId):
                     str(respond))
 
     list_task = []
+    # task_num = 3
+    # para = [{"key": "123.207.178.103"}, {"key": "134.175.66.174"}, {"key": "106.15.193.231"}]
     for i in range(task_num):
-        t = Thread(target=invoke_func, args=(rId, i))
+        t = Thread(target=invoke_func, args=(rId, i, para))
         t.start()
         if sync:
             list_task.append(t)
@@ -176,11 +178,14 @@ class FuncOp:
             print(str(e))
             return False
 
-    def invoke_function(self):
+    def invoke_function(self, req_para={}):
         try:
             client = self.get_client()
             tm_st = time.time() * 1000
-            resp = client.invoke(FunctionName=self.func_name, InvocationType='RequestResponse')
+            resp = client.invoke(
+                FunctionName=self.func_name,
+                InvocationType='RequestResponse',
+                Payload=json.dumps(req_para))
             tm_end = time.time() * 1000
             try:
                 resp = json.loads(resp['Payload'].read())
